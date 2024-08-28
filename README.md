@@ -1,19 +1,12 @@
-# 🎈 Blank app template
+# 🎈 Mr Matheson's Streamlit Cheat Sheet
 
-A simple Streamlit app template for you to modify!
+Giving you all the tools you need to be successful quickly using Streamlit in Digital Technology.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+## How it works?
+The cheat sheet app is run on streamlit's own server at [https://dt-cheatsheet.streamlit.app/](https://dt-cheatsheet.streamlit.app/). The page uses st.echo to both show the code and display its output. 
 
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## How to use?
+1. Find the action you wish to perform.
+2. Click on the action to see the code and output.
+3. Copy the code and paste it into your own streamlit app.
+4. Modify the code to suit your specific application needs. 

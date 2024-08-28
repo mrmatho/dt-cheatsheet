@@ -93,9 +93,16 @@ with col1:
     graph_expand = st.expander("See st.line_chart(), st.bar_chart(), st.area_chart and st.scatter_chart Examples")
     with graph_expand:
         st.write("Each code snippet below shows the corresponding output underneath.")
+        st.subheader("Loading data from spreadsheet")
+        st.write("""Before creating the graph we always need to load the data we will graph. 
+                 In this case, we will load the data from the spreadsheet 'ShaneEdwards.xlsx'
+                 which has statistics taken from AFLTables.com and put into a spreadsheet.""")
         with st.echo():
             import pandas as pd
             df = pd.read_excel("ShaneEdwards.xlsx")
+            
+        st.divider()
+        with st.echo():
             st.write("Line Chart")
             st.line_chart(df, x="Year", y=["Kicks", "Handballs"])
         st.divider()
