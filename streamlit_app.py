@@ -89,22 +89,30 @@ with col1:
         st.divider()
         
     # GRAPHS 
-    graph_expand = st.expander("See st.line_chart(), st.bar_chart() Examples")
+    st.subheader("Graphs")
+    graph_expand = st.expander("See st.line_chart(), st.bar_chart(), st.area_chart and st.scatter_chart Examples")
     with graph_expand:
         st.write("Each code snippet below shows the corresponding output underneath.")
         with st.echo():
             import pandas as pd
             df = pd.read_excel("ShaneEdwards.xlsx")
             st.write("Line Chart")
-            st.line_chart(df, x="Year", y="Kicks")
+            st.line_chart(df, x="Year", y=["Kicks", "Handballs"])
         st.divider()
         with st.echo():
             st.write("Bar Chart")
             st.bar_chart(df, x="Year", y="Goals")
+            st.write("Bar Chart Comparing Two Columns")
+            st.bar_chart(df, x="Year", y=["Frees For", "Frees Against"], stack=False)
         st.divider()
         with st.echo():
-            st.write("Area Chart")
-            st.area_chart(df, x="Year", y=["Frees For", "Frees Against"])
+            st.write("Scatter Chart")
+            st.scatter_chart(df, x="Games", y="Disposals")
+        
+        st.divider()
+        with st.echo():
+            st.write("Area Charts")
+            st.area_chart(df, x="Year", y="Tackles")
         st.divider()
     
 with col2:
