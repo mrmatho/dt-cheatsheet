@@ -195,4 +195,34 @@ with col2:
             slider2_input = st.slider("Slide me too!", min_value=0, max_value=200, value=(50, 150), step=1)
             st.write("You chose: ", slider2_input)
         st.divider()
-
+        
+    # Working with DataFrames
+    st.subheader("Working with DataFrames")
+    dataframes_expand = st.expander("See examples on filtering and modifying DataFrames")
+    with dataframes_expand:
+        st.write("Each code snippet below shows the corresponding output underneath.")
+        st.write("Loading the DataFrame from a spreadsheet")
+        with st.echo():
+            import pandas as pd
+            df = pd.read_excel("ShaneEdwards.xlsx")
+            st.write(df)
+        
+        st.divider()
+        with st.echo():
+            st.write("Filtering DataFrames")
+            st.write("Filtering by column value (Year is 2017)")
+            df_2017 = df[df["Year"] == 2017]
+            st.write(df_2017)
+            st.write("Filtering by multiple column values (More than 10 goals and More than 18 games)")
+            df[(df["Goals"] > 10) & (df["Games"] > 18)]
+            st.write()
+        st.divider()
+        with st.echo():
+            st.write("Modifying DataFrames")
+            st.write("Adding a new column - Disposals Per Game")
+            df["Disposals Per Game"] = df["Disposals"] / df["Games"]
+            st.write(df)
+            st.write("Dropping a column (remove disposals per game)")
+            df.drop(columns="Disposals Per Game", inplace=True)
+            st.write(df)
+        st.divider()
