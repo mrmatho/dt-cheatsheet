@@ -4,13 +4,13 @@ st.set_page_config(page_title="Streamlit Cheat Sheet",
                    page_icon=":brain:", 
                    layout="wide")
 
-st.title("Streamlit Cheat Sheet")
+st.header(":rainbow: Streamlit Cheat Sheet")
 st.caption("This cheat sheet provides a quick reference to the most common Streamlit functions.")
 st.write("Collated by Mr Matheson, with the help of the Streamlit documentation and a tiny bit of Github Copilot.")
-col1, col2 = st.columns(2)
+tab1, tab2 = st.tabs(["Outputs","Inputs"])
 
 
-with col1:
+with tab1:
     st.header("Outputs")
     # WRITING
     st.subheader("Writing")
@@ -122,7 +122,7 @@ with col1:
             st.area_chart(df, x="Year", y="Tackles")
         st.divider()
     
-with col2:
+with tab2:
     st.header("Inputs")
     # BUTTONS AND BASIC INPUTS
     st.subheader("Buttons and Basic Inputs")
