@@ -4,24 +4,26 @@ st.set_page_config(page_title="Streamlit Cheat Sheet",
                    page_icon=":pirate_flag:", 
                    layout="wide")
 
-st.header(":pirate_flag: Streamlit Cheat Sheet")
+st.header(":pirate_flag: Streamlit Cheat Sheet", anchor="top")
 st.caption("This cheat sheet provides a quick reference to the most common Streamlit functions.")
 st.write("Collated by Mr Matheson, with the help of the Streamlit documentation and a tiny bit of Github Copilot.")
 st.subheader("Contents", divider=True )
 st.markdown("""
-            - [Inputs](#Inputs)
-                - [Buttons and Basic Inputs](#Buttons-and-Basic-Inputs)
-                - [Checkboxes and Radio Buttons](#Checkboxes-and-Radio-Buttons)
-                - [Select Boxes and Multi-Select](#Select-Boxes-and-Multi-Select)
-                - [Date and Time Inputs](#Date-and-Time-Inputs)
-                
-            - [Outputs](#Outputs)
-                - [Writing](#Writing)
-                - [Headings and other specific text types](#Headings-and-other-specific-text-types)
-                - [Images and Media](#Images-and-Media)
-                - [DataFrames and Tables](#DataFrames-and-Tables)
-                - [Graphs](#Graphs)
-            - [Working with DataFrames](#Working-with-DataFrames)
+            **[Inputs](#inputs)**
+            - [Buttons and Basic Inputs](#buttons-and-basic-inputs)
+            - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
+            - [Select Boxes and Multi-Select](#select-boxes-and-multi-select)
+            - [Date and Time Inputs](#date-and-time-inputs)
+            ---    
+            **[Outputs](#outputs)**
+            - [Writing](#writing)
+            - [Headings and other specific text types](#headings-and-other-specific-text-types)
+            - [Images and Media](#images-and-media)
+            - [Graphs](#graphs)
+            ---
+            **[DataFrames](#dataframes)**
+            - [Filtering and Modifying DataFrames](#filtering-and-modifying-dataframes)
+            - [Displaying DataFrames](#displaying-dataframes)
             """)
 
 st.header("Inputs", divider=True)
@@ -57,6 +59,7 @@ with checkbox_expand:
     with st.echo():
         radio_input = st.radio("Choose an option", ["Option 1", "Option 2", "Option 3"])
         st.write(f"You chose: {radio_input}")
+
 
 # SELECT BOXES AND MULTI-SELECT        
 st.subheader("Select Boxes and Multi-Select")
@@ -96,6 +99,7 @@ with slider_expand:
         slider2_input = st.slider("Slide me too!", min_value=0, max_value=200, value=(50, 150), step=1)
         st.write("You chose: ", slider2_input)
     st.divider()
+st.markdown("[Return to top](#top)")
     
 
 st.header("Outputs", divider=True)
@@ -155,25 +159,7 @@ with media_expand:
         st.video("https://www.youtube.com/watch?v=9Q8PwcDzb8M")
     st.divider()
     
-# DATAFRAMES AND TABLES
-st.subheader("DataFrames and Tables")
-table_expand = st.expander("See st.dataframe() and st.data_editor( Examples") 
-with table_expand:
-    st.write("Each code snippet below shows the corresponding output underneath.")
-    with st.echo():
-        import pandas as pd
-        st.write("Shane Edwards Career Stats - from AFLTables.com")
-        df = pd.read_excel("ShaneEdwards.xlsx")
-        st.dataframe(df)
-        st.write("Highlight the maximum value in each column (use axis=1 for rows)")
-        st.dataframe(df.style.highlight_max(axis=0))   
-        
-    st.divider()
-    with st.echo():
-        st.write("Editable DataFrame (Changes the stored data)")
-        st.data_editor(df, key="editable_df")
-        
-    st.divider()
+  
     
 # GRAPHS 
 st.subheader("Graphs")
@@ -213,7 +199,8 @@ with graph_expand:
 
 
 # Working with DataFrames
-st.header("Working with DataFrames")
+st.header("DataFrames", divider=True, anchor="dataframes")
+st.subheader("Filtering and Modifying DataFrames")
 dataframes_expand = st.expander("See examples on filtering and modifying DataFrames")
 with dataframes_expand:
     st.write("Each code snippet below shows the corresponding output underneath.")
@@ -242,3 +229,23 @@ with dataframes_expand:
         df.drop(columns="Disposals Per Game", inplace=True)
         st.write(df)
     st.divider()
+# Displaying DataFrames
+st.subheader("Displaying DataFrames")
+table_expand = st.expander("See st.dataframe() and st.data_editor( Examples") 
+with table_expand:
+    st.write("Each code snippet below shows the corresponding output underneath.")
+    with st.echo():
+        import pandas as pd
+        st.write("Shane Edwards Career Stats - from AFLTables.com")
+        df = pd.read_excel("ShaneEdwards.xlsx")
+        st.dataframe(df)
+        st.write("Highlight the maximum value in each column (use axis=1 for rows)")
+        st.dataframe(df.style.highlight_max(axis=0)) 
+        
+    st.divider()
+    with st.echo():
+        st.write("Editable DataFrame (Changes the stored data)")
+        st.data_editor(df, key="editable_df")
+        
+    st.divider()
+st.markdown("[Return to top](#top)")
