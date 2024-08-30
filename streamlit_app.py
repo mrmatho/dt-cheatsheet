@@ -19,30 +19,30 @@ with stylable_container("toc", css_styles="""{
     c1, c2, c3 = st.columns(3)
     with c1:
         st.markdown("""
-                **[:keyboard: Inputs](#inputs)**
+                :keyboard: **[Inputs](#inputs)**
                 - [Buttons and Basic Inputs](#buttons-and-basic-inputs)
                 - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
                 - [Select Boxes and Multi-Select](#select-boxes-and-multi-select)
                 - [Date and Time Inputs](#date-and-time-inputs)
-                --- 
+                
             """)
     with c2:   
         st.markdown("""
-                **[:tv: Outputs](#outputs)**
+                :tv: **[Outputs](#outputs)**
                 - [Writing](#writing)
                 - [Headings and other specific text types](#headings-and-other-specific-text-types)
                 - [Images and Media](#images-and-media)
                 - [Graphs](#graphs)
-                ---
+                
             """)
     with c3:
         st.markdown("""
-                **[:date: DataFrames](#dataframes)**
+                :date: **[DataFrames](#dataframes)**
                 - [Filtering and Modifying DataFrames](#filtering-and-modifying-dataframes)
                 - [Displaying DataFrames](#displaying-dataframes)
                 """)
 
-st.header("Inputs", divider=True)
+st.header(":keyboard: Inputs", divider=True)
 # BUTTONS AND BASIC INPUTS
 st.subheader("Buttons and Basic Inputs")
 input_expand = st.expander("See st.button(), st.text_input(), st.number_input() Examples")
@@ -118,7 +118,7 @@ with slider_expand:
 st.markdown("[Return to top](#top)")
     
 
-st.header("Outputs", divider=True)
+st.header(":tv: Outputs", divider=True)
 # WRITING
 st.subheader("Writing")
 writing_expander = st.expander("See st.write() Examples")
@@ -149,7 +149,7 @@ with head_expand:
         st.header("This is a header")
         st.subheader("This is a subheader")
     st.divider()
-    st.write("You can use the equation language LaTeX to write mathematical equations.")
+    st.write("You can use the equation\publishing language LaTeX to write mathematical equations.")
     with st.echo():
         st.latex(r"a + ar +\frac{1}{2+a} - a r^3 ")
         
@@ -215,7 +215,7 @@ st.markdown("[Return to top](#top)")
 
 
 # Working with DataFrames
-st.header("DataFrames", divider=True, anchor="dataframes")
+st.header(":date: DataFrames", divider=True, anchor="dataframes")
 st.subheader("Filtering and Modifying DataFrames")
 dataframes_expand = st.expander("See examples on filtering and modifying DataFrames")
 with dataframes_expand:
