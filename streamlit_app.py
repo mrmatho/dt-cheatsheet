@@ -40,6 +40,10 @@ with stylable_container("toc", css_styles="""{
                 :date: **[DataFrames](#dataframes)**
                 - [Filtering and Modifying DataFrames](#filtering-and-modifying-dataframes)
                 - [Displaying DataFrames](#displaying-dataframes)
+                
+                :earth_asia: **[Using Live API Data](#api-data)**
+                - [Loading Data from an API](#loading-data-from-an-api)
+                - [Using the JSON API Data](#using-the-json-api-data)
                 """)
 
 st.header(":keyboard: Inputs", divider=True)
@@ -265,3 +269,54 @@ with table_expand:
         
     st.divider()
 st.markdown("[Return to top](#top)")
+
+
+# Using Live API data
+st.header(":earth_asia: Using Live API Data", divider=True, anchor="api-data")
+st.subheader("Loading Data from an API")
+api_expand = st.expander("See examples on using requests and json to download API data")
+with api_expand:
+    st.write("Each code snippet below shows the corresponding output underneath.")
+    st.write("Accessing the API - including caching (Deck of Cards API)")
+    with st.echo():
+        import requests
+        import json
+        # Writing a function to allow the data to be collected from the API
+        @st.cache_data # Caching the API response to avoid repeated requests
+        def get_data(url):
+            response = requests.get(url)
+            json_data = response.json()
+            return json_data
+            
+            
+        
+        json_data = get_data("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+        st.write(json_data)
+    
+    st.write("Using the API data to create a second request (display a card image)")
+    with st.echo():
+        # Accessing the deck_id from the JSON data in the previous example. 
+        deck_id = json_data['deck_id']
+        # Using the deck id to get the card
+        card_json = get_data(f"https://deckofcardsapi.com/api/deck/{deck_id}/draw/?count=3")
+        st.write(card_json)
+        # Displaying the card image - the first card in "cards", then accessing the "image" property
+        st.image(card_json["cards"][0]["image"], width=100)
+        
+st.subheader("Using the JSON API Data")
+json_expand = st.expander("See examples on using JSON data")
+with json_expand:
+    st.write("Each code snippet below shows the corresponding output underneath. Using the JSON data downloaded in previous section")
+    with st.echo():
+        st.write("Viewing the JSON data")
+        st.write(card_json)
+    with st.echo():
+        st.write("Accessing the deck_id")
+        st.write(card_json["deck_id"])
+        st.write("Accessing the image of the second card")
+        img_url = card_json["cards"][1]["image"]
+        st.write(img_url)
+        st.image(img_url)
+        st.write("Find out how many cards are remaining")
+        st.metric(value = int(card_json["remaining"]), label="Cards Remaining")
+    
