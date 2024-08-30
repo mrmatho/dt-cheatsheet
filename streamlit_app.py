@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_extras.stylable_container import stylable_container
 
 st.set_page_config(page_title="Streamlit Cheat Sheet",
                    page_icon=":pirate_flag:", 
@@ -7,24 +8,33 @@ st.set_page_config(page_title="Streamlit Cheat Sheet",
 st.header(":pirate_flag: Streamlit Cheat Sheet", anchor="top")
 st.caption("This cheat sheet provides a quick reference to the most common Streamlit functions.")
 st.write("Collated by Mr Matheson, with the help of the Streamlit documentation and a tiny bit of Github Copilot.")
-st.subheader("Contents", divider=True )
-st.markdown("""
-            **[Inputs](#inputs)**
-            - [Buttons and Basic Inputs](#buttons-and-basic-inputs)
-            - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
-            - [Select Boxes and Multi-Select](#select-boxes-and-multi-select)
-            - [Date and Time Inputs](#date-and-time-inputs)
-            ---    
-            **[Outputs](#outputs)**
-            - [Writing](#writing)
-            - [Headings and other specific text types](#headings-and-other-specific-text-types)
-            - [Images and Media](#images-and-media)
-            - [Graphs](#graphs)
-            ---
-            **[DataFrames](#dataframes)**
-            - [Filtering and Modifying DataFrames](#filtering-and-modifying-dataframes)
-            - [Displaying DataFrames](#displaying-dataframes)
-            """)
+with stylable_container("toc", css_styles="""{
+                        padding: 20px;
+                        margin: 20px;
+                        background-color: #77bb77;
+                        border-color: #0000ff;
+                        border-radius: 10px;
+                        border-width: 2px;}
+                        """):
+    st.header("Contents" )
+
+    st.markdown("""
+                **[Inputs](#inputs)**
+                - [Buttons and Basic Inputs](#buttons-and-basic-inputs)
+                - [Checkboxes and Radio Buttons](#checkboxes-and-radio-buttons)
+                - [Select Boxes and Multi-Select](#select-boxes-and-multi-select)
+                - [Date and Time Inputs](#date-and-time-inputs)
+                ---    
+                **[Outputs](#outputs)**
+                - [Writing](#writing)
+                - [Headings and other specific text types](#headings-and-other-specific-text-types)
+                - [Images and Media](#images-and-media)
+                - [Graphs](#graphs)
+                ---
+                **[DataFrames](#dataframes)**
+                - [Filtering and Modifying DataFrames](#filtering-and-modifying-dataframes)
+                - [Displaying DataFrames](#displaying-dataframes)
+                """)
 
 st.header("Inputs", divider=True)
 # BUTTONS AND BASIC INPUTS
